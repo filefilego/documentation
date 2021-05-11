@@ -1,0 +1,19 @@
+{
+  "name": "docs.filefilego.com",
+  "version": "0.0.1",
+  "description": "Filefilego Documentation",
+  "main": "index.js",
+  "authors": {
+    "name": "",
+    "email": ""
+  },
+  "repository": "/docs.filefilego.com",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
