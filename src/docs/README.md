@@ -71,7 +71,7 @@ Filefilego network is meshnet with full nodes running the `CLI Client` which is 
 
 
 
-![Network of Filefilego](/ffg_net.svg)
+![Network of Filefilego](/documentation/ffg_net.svg)
 
 ### The Architecture
 
@@ -80,6 +80,6 @@ Filefilego network is meshnet with full nodes running the `CLI Client` which is 
 3. Off-chain data integration with the blockchain allows us to store arbitrary-length files off-chain and link them to on-chain entities. Binlayer engine exposes an API that allows DApps and programs to upload data to the node with a proper authorization mechanism.
 4. Search accuracy and flexibility are as important as the core blockchain. Our implementation supports complex queries including binary searches using a specific query language.
 
-![Architecture of Filefilego](/ffg_arch.png)
+![Architecture of Filefilego](/documentation/ffg_arch.png)
 
 

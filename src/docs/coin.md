@@ -7,7 +7,7 @@ Filefilego utilizes a native currency which is used across the network. The defa
 Coins are mined by verifiers and there is no pre-mine or reserved coins attached to any address. This chart shows the rate of coin emission.
 
 
-![Network of Filefilego](/coin.png)
+![Network of Filefilego](/documentation/coin.png)
 
 ## Currency Details
 
