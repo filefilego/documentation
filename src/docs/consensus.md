@@ -1,6 +1,6 @@
 # Consensus Mechanisms
 
-In filefilego, all full nodes keep a local copy of the database/ledger, and there must a way for these nodes to reach agreement regarding the state of the blockchain. We have 2 main types of consensus mechanisms:
+Within Filefilego, every full node maintains a local copy of the database or ledger, and it is essential for these nodes to establish consensus on the current state of the blockchain. The two primary types of consensus mechanisms utilized are:
 
 - Block Consensus:
 
@@ -12,20 +12,19 @@ In filefilego, all full nodes keep a local copy of the database/ledger, and ther
     1. Proof of Transfer (PoX)
     2. Proof of Data Possession (PoDP)
 
-Block-time of 10 seconds requires an appropriate consensus algorithm that doesn't waste much processing power and is efficient enough to process a high volume of transactions. For the first phase of FileFileGo, we choose to use Proof of Authority to achieve consensus, and later on a PoS mechanism will replace the current algorithm. PoW based algorithms are risky (PoW is safe by design) for new blockchains since there are already huge pools of computing power out there and can be used to perform 51% attacks.
+Given a block-time of 10 seconds, it is crucial to select a consensus algorithm that maximizes processing efficiency while handling a high transaction volume. In the initial phase of FileFileGo, we have opted for Proof of Authority as our consensus mechanism, with plans to transition to a PoS mechanism in the future. Using PoW-based algorithms poses a significant risk for new blockchains, as there exist vast pools of computing power that can be leveraged to perform 51% attacks, despite the inherent safety of PoW by design.
 
 ## Proof-of-Authority (PoA)
 
-We currently use PoA to seal blocks by a set of validators. These validators are part of the genesis block, however we have extended this mechanism to support addition and deletion of verifiers either by an authority node, or a contract which allows nodes to stake in order to become verifiers.
+At present, we employ PoA as our block sealing mechanism, with a designated group of validators who were included in the genesis block. Nevertheless, we have expanded this mechanism to accommodate the addition and removal of validators, which can be facilitated by either an authority node or a contract. Additionally, nodes can stake to become validators, further enhancing the inclusivity of the consensus mechanism.
 
 ## Proof-of-Stake (PoS)
 
-In the future, proof-of-stake will eventually replace the current PoA mechanism so different parties can participate in the block mining process. In terms of blockchain governance, we want more parties and developers to get involved and increase the stakeholders, and one of the incentives is the Proof-of-Stake mechanism.
+Moving forward, we plan to phase out our current PoA mechanism in favor of Proof-of-Stake, enabling a broader range of entities to participate in the block mining process. As part of our broader blockchain governance strategy, we aim to increase the number of parties and developers involved in the network, thereby expanding our pool of stakeholders. The Proof-of-Stake mechanism serves as a powerful incentive towards this end.
 
 ## Proof-of-Transfer (PoX) - Proof-of-Data Possession (PoDP)
 
-PoX and PoDP belong to the `Data Verification Consensus` category which are used to challenge and verify data transfer contracts. Without these mechanisms it would be impossible for us to deterministicly and mathematically prove that a node has successfully transfered data within the network.
-
+PoX and PoDP are both part of the `Data Verification Consensus` category, which are utilized to verify and challenge data transfer contracts. These mechanisms are essential for enabling us to determine, in a deterministic and mathematically sound manner, whether a node has effectively transferred data within the network. Without these mechanisms, this process would be unfeasible.
 
 ### Problem
 
@@ -41,7 +40,10 @@ The network can resist Byzantine faults if `node_x` can broadcast (peer-to-peer)
 1. If `node_x` is an honest node, then all honest nodes agree on the value x.
 2. In any case, all honest nodes agree on the same value y.
 
-Proof of Transfer solves exactly these problems. It is designed so that honest nodes within the network can verify and agree that `node_2` has successfully transferred `data_x` to `node_1`. In order to achieve this consensus mechanism, we introduce a set of verifiers which are responsible to challenge the participating nodes. A simple and straightforward approach would be to send the required data to a verifier and then forward it to the destination node. However, this approach introduces bandwidth and storage bottlenecks on the verifiers which in turn decreases the throughput of the overall network. The solution must have minimal bandwidth and storage/memory requirements.
+Proof of Transfer presents a solution to precisely these challenges. This consensus mechanism is designed to enable honest nodes within the network to verify and reach agreement that `node_2` has indeed transferred `data_x` to `node_1`. To accomplish this, we introduce a set of verifiers whose role is to challenge the participating nodes.
+
+While a simple and straightforward approach would be to send the requisite data to a verifier and subsequently forward it to the destination node, such an approach would generate bandwidth and storage bottlenecks on the verifiers, thereby decreasing the network's overall throughput. As such, the proposed solution must satisfy stringent requirements for minimal bandwidth and storage/memory utilization.
+
 
 ```
               ┌───────────┐
@@ -74,9 +76,9 @@ Verifiers can use Merkle Trees as a data integrity verification mechanism withou
 
 #### The Algorithm
 
-In this section, the complete life cycle of a data transfer verification is demonstrated.
+To address the challenges posed by bandwidth and storage limitations, verifiers may employ Merkle Trees as a data integrity verification mechanism, without necessitating access to the actual data. In this framework, participating nodes are responsible for generating Merkle trees that verifiers subsequently utilize for comparison and other operations.
 
-1. **Data Discovery:** There are several wire protocols created to allow nodes to communicate with each other. The first protocol used by nodes is the `Data Query` protocol which allows nodes to broadcast queries to the network throughout a gossip channel and get the response back by using direct communication. Simply put, a node asks who hosts a specific piece of data.
+1. **Data Discovery:** Multiple wire protocols have been developed to facilitate communication between nodes within the network. The `Data Query protocol` is the first protocol utilized by nodes, enabling them to broadcast queries to the network via a gossip channel and receive a response via direct communication. In essence, this protocol enables a node to inquire about the host of a specific piece of data.
 
 ```
              1. Data Query Request
@@ -92,7 +94,7 @@ In this section, the complete life cycle of a data transfer verification is demo
     └──────────────────────────────────────┘
 ```
 
-2. **Smart Contract:** The `Data Query Response` payload contains all the information needed to prepare a smart contract transaction. This transaction is then broadcasted to the network which is then selected by a verifier.
+2. **Smart Contract:** The `Data Query Response` payload contains all the requisite information for preparing a smart contract transaction. Once the transaction is prepared, it is broadcast to the network, subsequently selected by a verifier for further processing.
 
 ```
 ┌──────────────────────────────────────┐
@@ -115,14 +117,15 @@ In this section, the complete life cycle of a data transfer verification is demo
 
 
 
-3. **Verification:** Verifier(`v1`) communicates with the participating nodes and generates a challenge for the node which hosts the data(`node_2`). The challenge consists of the following steps:
-* `node_2` should create a Merkle tree that matches the original Merkle root of `data_x` uploaded in the first place.
-* `v1` decides the **order** and the **number of blocks/data** ranges to be sent to `node_1` by `node_2`. We don't want to reveal the order of blocks to `node_1` yet.
-* `v1` asks `node_2` for a fixed range of data, which will be encrypted using a random key `k1` as `data_enc` by `v1` and sent to `node_1`.
+3. **Verification:** The verifier (`v1`) interacts with participating nodes and issues a challenge to the node hosting the data (`node_2`). The challenge consists of the following steps:
+* `node_2` creates a Merkle tree that matches the original Merkle root of `data_x` that was initially uploaded.
+* `v1` decides on the number and order of blocks/data ranges to be sent to `node_1` by `node_2`, while concealing the order of the blocks from `node_1`.
+* `v1` requests a fixed range of data from `node_2`, which is then encrypted using a random key (`k1`) by `v1` and transmitted to `node_1`.
 
-At this stage, `node_1` has some `data_z`, plus some `data_enc` but has no knowledge on how to reassemble them in order to get the original file. Now, `v1` can validate the integrity of the data sent to `node_1` and if they match the original Merkle tree's identity, then the decryption key `k1` is sent to `node_1`. The order of the blocks will also be sent, so `node_1` can put all the parts together to reassemble the data. The final step is to release the fees to `node_2` by `v1`. 
+At this stage, `node_1` possesses both `data_z` and `data_enc`, but lacks the necessary knowledge to reassemble them in the correct order to retrieve the original file. `v1` can validate the integrity of the data that has been transmitted to `node_1`, and if it matches the original Merkle tree's identity, the decryption key `k1` is transmitted to `node_1` along with the order of the blocks. `node_1` can then reassemble all of the components to obtain the original data file. The final step involves releasing the fees to `node_2` by `v1`.
 
-With this algorithm, we simultaneously achieve Proof of Transfer and Proof of Data Posession.
+This algorithm allows for the simultaneous achievement of Proof of Transfer and Proof of Data Possession.
+
 ```
             ┌───┬───┬───┬───┬───┬───┬───┬───┐
 Data Blocks:│ a │ b │ c │ d │ e │ f │ g │ h │
@@ -144,4 +147,4 @@ Data Blocks:│ a │ b │ c │ d │ e │ f │ g │ h │
 
 ## Why not Proof-of-Work
 
-New blockchains suchs as filefilego are in risk of PoW-based attacks such as 51% attack where the blockchain can be reverted to exclude specific transactions. In simple words, these days its common to access huge amount of computing power and therefore perform 51% attacks. There are other reasons for not using PoW, which goes back to the `PoW vs PoS` debates.
+Newer blockchains, like FileFileGo, are vulnerable to attacks based on Proof of Work (PoW), such as the 51% attack, where the attacker can use a majority of the computing power to reverse transactions on the blockchain. This is because large pools of computing power are easily accessible these days, making such attacks feasible. In addition to the risk of such attacks, there are other factors that make PoW less desirable when compared to other consensus mechanisms such as Proof of Stake (PoS), which is the subject of ongoing debates.

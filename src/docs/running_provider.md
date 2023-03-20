@@ -1,20 +1,17 @@
 # Run a Storage Provider Node
 
-Anyone can become a storage provider without any limitation or pre-registration by running a full-node with the binlayer storage engine enabled. Binalyer engine supports network filesystems so its possible for storage providers to mount and use these types of filesystems. 
-
-
+Becoming a storage provider on the Filefilego network is a simple process that does not require any registration or restrictions. Providers can join by running a full-node with the storage engine enabled, which supports network filesystems, allowing storage providers to mount and use these types of filesystems.
 
 ## Hardware Requirements
 
-The storage engine simply requires storage, the larger the better. However there are some signature generation algorithms which are CPU-bound meaning that you could add more resources to make it faster. In general we recommend decent CPUs with hardware support for encryption and hashing.
-
+The storage engine primarily requires storage space, with larger capacity being advantageous. While certain signature generation algorithms are CPU-bound, adding more resources can enhance processing speed. As a general recommendation, it is advisable to utilize CPUs with hardware support for encryption and hashing.
 
 ## Running a Provider
 
-Using the `--binlayer` cli flag, we can run the client in storage provider mode and use `-binlayerdir="/home"` to set the destination folder for storage with `--binlayer_token="1234"` as access token for your dapps and other applications. Please note that its possible to create other tokens from this token as this is a master token and should be avoided in other applications.
+To operate the client in storage provider mode, the `--storage` cli flag is utilized, with the `--storage_dir="/home"` command setting the destination folder for storage. The `--storage_token="1234"` flag sets the access token for dapps and other applications. However, it is important to note that this token is a master token and should not be used for other applications. Separate tokens should be created for each application as needed.
 
 ```
-./filefilego --rpc --http --httpport=8090 --httpaddr=127.0.0.1 --bootstrapnodes="/ip4/{ipaddresshere}/tcp/10209/p2p/{peeridhere}" --rpcservices="channel,transaction,account,block,ffg" --binlayer --binlayerdir="/home" --binlayer_token="1234"
+./filefilego --http --http_port=8090 --http_addr=127.0.0.1 --bootstrap_nodes="/ip4/{ipaddresshere}/tcp/10209/p2p/{peeridhere}" --rpc_services="channel,transaction,account,block,ffg" --storage --storage_dir="/home" --storage_token="1234"
 ```
 
 ### Minimum requirements

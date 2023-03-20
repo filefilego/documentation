@@ -2,19 +2,17 @@
 
 <Bit/>
 
-We have seen the rise of the Internet from the first days until now. Open internet suffers from big corporations and ISPs which censor freedom of speech. We have seen acts and statements such as SOPA, PIPA, ACTA and so many more from law-makers with the goal of controlling the Internet and the flow of information.
+The FileFileGo protocol is a peer-to-peer data-sharing network designed for the web3 era, with an incentive mechanism, full-text search, storage, and indexing/tracking. Its decentralized architecture enables users to share data without censorship or a single point of failure. By leveraging game-theory concepts, FileFileGo incentivizes participation and ensures data availability while achieving fault-tolerance and preserving privacy.
 
-These days it's extremely difficult for sites like WikiLeaks, thepiratebay, and so on to operate without interruption and pressure from different oppressing parties. With these in mind, we have developed the FileFileGo protocol and stacks to allow users to access and share data without a single point of failure.
+As the internet has grown, it has become increasingly vulnerable to censorship and control by large corporations and ISPs. Governments have also attempted to regulate the flow of information online, making it challenging for platforms like WikiLeaks and The Pirate Bay to operate without interruption. The FileFileGo protocol was developed to address these issues and enable users to access and share information freely.
 
-A Peer-to-peer data-sharing network with indexing/tracking, storage, full-text search, and incentive mechanism form a decentralized network that allows users to share data without a single point of failure and censorship. The architecture is designed in a way to prevent censorship and privacy issues, improves data availability with an incentive system based on game-theory concepts, and achieves fault-tolerance. To solve these challenges we propose a Peer-to-peer and decentralized data sharing network (Filefilego) for the web3 era.
+FileFileGo is an open-source community project, with no centralized control or ownership. Its coin distribution is designed to be fair, with an emission of 40 FFG per block that decreases by half every 24 months. The protocol is launched without ICO/STO/IEO or pre-mine, relying on a Proof of Authority consensus algorithm that will eventually transition to Proof of Stake to allow more stakeholders to participate.
 
-Filefilego is not controlled by any individual. It's a joint effort by the Open-source community. The coin distribution is designed to be as fair as possible, with the emission of 15 Zaran (the native currency) per block which is divided by 2 every 24 months.
-
-Filefilego is launched fairly - free of ICO/STO/IEO or pre-mine. We rely on a current PoA (Proof of Authority) consensus algorithm which will eventually be replaced by a PoS (Proof of Stake) to allow more parties to participate in the project. Support the movement by contributing to the project and develop innovative ideas that respect our digital rights, privacy, freedom of information, freedom from Internet censorship, and net neutrality.
+By supporting FileFileGo, users can help promote digital rights, privacy, freedom of information, and net neutrality. We encourage contributions and innovative ideas to ensure that the internet remains an open and decentralized platform.
 
 ## Why Filefilego
 
-Let us first demonstrate the problems of existing file-sharing technologies and get a better understanding on what problems this project solves. Today, if we want to access some data over the Internet, we need to consider:
+To gain a better understanding of the problems that this project aims to solve, let us first examine the shortcomings of current file-sharing technologies. When accessing data online, several factors must be taken into consideration, including:
 
 1. **Where to find the data (Location)**
 
@@ -61,13 +59,13 @@ Check the [Comparison](./comparison.md) page for more information regarding othe
 
 ## How It Works
 
-Filefilego network is meshnet with full nodes running the `CLI Client` which is the implementation of the specifications and the protocols. The `Wallet` application is developed to allow interaction with full nodes using their JSONRPC interface.
+The Filefilego network is a meshnet consisting of full nodes that run the CLI Client, which implements the network's specifications and protocols. The Wallet application has been developed to facilitate interaction with full nodes by utilizing their JSONRPC interface.
 
 ### The Network
 
-1. Blockchain verifiers are responsible for running the PoA/PoS consensus algorithm and seal blocks which are then broadcasted to the network.
-2. Data verifiers are part of the Proof of Transfer (PoX) and Proof of Data Possession (PoDP) consensus mechanisms. The participating nodes of the network achieve consensus on the validity of data transfer between "Storage Providers" and other nodes.
-3. Storage providers utilize the "BinLayer" storage engine to host data that are referenced by the blockchain channels.
+1. The responsibility of running the PoA/PoS consensus algorithm and sealing blocks that are broadcasted to the network lies with the blockchain verifiers.
+2. Within the Proof of Transfer (PoX) and Proof of Data Possession (PoDP) consensus mechanisms, data verifiers play a crucial role. They assist in achieving consensus on the validity of data transfer between Storage Providers and other nodes within the network.
+3. The storage of data that is referred to by blockchain channels is facilitated by Storage Providers utilizing the Storage engine.
 
 
 
@@ -75,10 +73,10 @@ Filefilego network is meshnet with full nodes running the `CLI Client` which is 
 
 ### The Architecture
 
-1. The core component of filefilego is the blockchain itself which currently uses PoA consensus mechanism and soon migrates to PoS (Proof-of-Stake). Libp2p is utilized for peer-to-peer communication and networking.
-2. With Proof of Transfer (PoX), we make it possible to verify that data have been transferred from one node to another without downloading a copy of it. We use novel data structures and cryptography to perform the verification process.
-3. Off-chain data integration with the blockchain allows us to store arbitrary-length files off-chain and link them to on-chain entities. Binlayer engine exposes an API that allows DApps and programs to upload data to the node with a proper authorization mechanism.
-4. Search accuracy and flexibility are as important as the core blockchain. Our implementation supports complex queries including binary searches using a specific query language.
+1. The blockchain serves as the fundamental element of filefilego, presently utilizing the PoA consensus mechanism and transitioning towards PoS (Proof-of-Stake). Peer-to-peer communication and networking are facilitated through the use of Libp2p.
+2. Our Proof of Transfer (PoX) technology allows the verification of data transfer between nodes without requiring the download of a copy. This verification process is enabled through the use of innovative data structures and cryptography.
+3. Our off-chain data integration strategy with the blockchain allows for the storage of files with arbitrary lengths off-chain, linked to on-chain entities. The Storage engine exposes an API that provides DApps and programs with the ability to upload data to the node with a proper authorization mechanism.
+4. The accuracy and flexibility of the search feature are paramount to our system, and our implementation supports complex queries, including binary searches, through a query language.
 
 ![Architecture of Filefilego](/documentation/ffg_arch.png)
 

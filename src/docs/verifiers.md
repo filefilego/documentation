@@ -1,9 +1,9 @@
 # Introduction
 
-Data transfers between nodes in the network are verified by a set of validators called `Data Verifiers` as discussed in the [Consensus](./consensus.md) section. Data verifiers run the PoX/PoDP algorithms which utilize symmetric encryption and hash functions that are highly CPU-bound.
+The network relies on a group of validators known as "Data Verifiers" to verify data transfers between nodes, as detailed in the "Consensus" section. These verifiers employ the PoX/PoDP algorithms, which utilize CPU-intensive symmetric encryption and hash functions.
 
 # Benefits of Running a Data Verification Node
 
-Running a Data Verification Node allows you to get rewarded with a verification fee while supporting and securing the network/ecosystem. The reward fee is not fixed and is dynamically calculated for each verification performed on the network.
+By running a Data Verification Node, users have the opportunity to earn verification fees while supporting and securing the network ecosystem. These fees are not fixed and are dynamically calculated based on the verification workload performed on the network.
 
-This verification process is similar to mining but instead of mining blocks, data signatures are compared and validated.
+The verification process resembles mining, but instead of mining blocks, data signatures are compared and validated.
