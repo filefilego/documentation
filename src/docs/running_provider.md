@@ -11,7 +11,7 @@ The storage engine primarily requires storage space, with larger capacity being 
 To operate the client in storage provider mode, the `--storage` cli flag is utilized, with the `--storage_dir="/home"` command setting the destination folder for storage. The `--storage_token="1234"` flag sets the access token for dapps and other applications. However, it is important to note that this token is a master token and should not be used for other applications. Separate tokens should be created for each application as needed.
 
 ```
-./filefilego --http --http_port=8090 --http_addr=127.0.0.1 --bootstrap_nodes="/ip4/{ipaddresshere}/tcp/10209/p2p/{peeridhere}" --rpc_services="channel,transaction,account,block,ffg" --storage --storage_dir="/home" --storage_token="1234"
+./filefilego --rpc_services="*" --search_engine --storage --storage_dir="/home/" --storage_token="admintoken" --storage_fees_byte="10000" --addr=0.0.0.0 --http --http_addr=0.0.0.0 --data_downloads_path="/home/ffg/Downloads/"
 ```
 
 ### Minimum requirements

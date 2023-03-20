@@ -44,16 +44,16 @@ This section will help you compile and test your program
       <code-block title="Linux/Unix" active>
       ```bash
    git clone https://github.com/filefilego/filefilego.git
-   cd filefilego/cli
-   go build -o filefilego .
+   cd filefilego
+   make build
       ```
       </code-block>
 
       <code-block title="Windows">
       ```bash
    git clone https://github.com/filefilego/filefilego.git
-   cd filefilego/cli
-   go build -o filefilego.exe .
+   cd filefilego
+   make build
       ```
       </code-block>
    </code-group>
@@ -71,13 +71,13 @@ Before we run the cli client, we need to create a node identification key which 
    <code-group>
    <code-block title="Linux/Unix" active>
    ```bash
-   ./filefilego account create_node_key thisismynodespassword
+   ./filefilego address create_node_key thisismynodespassword
    ```
    </code-block>
 
    <code-block title="Windows">
    ```bash
-   filefilego.exe account create_node_key thisismynodespassword
+   filefilego.exe address create_node_key thisismynodespassword
    ```
    </code-block>
    </code-group>
@@ -87,13 +87,13 @@ Before we run the cli client, we need to create a node identification key which 
    <code-group>
    <code-block title="Linux/Unix" active>
    ```bash
-   ./filefilego account create mypassword
+   ./filefilego address create mypassword
    ```
    </code-block>
 
    <code-block title="Windows">
    ```bash
-   filefilego.exe account create mypassword
+   filefilego.exe address create mypassword
    ```
    </code-block>
    </code-group>
@@ -105,13 +105,13 @@ Before we run the cli client, we need to create a node identification key which 
    <code-group>
    <code-block title="Linux/Unix" active>
    ```bash
-   ./filefilego account list
+   ./filefilego address list
    ```
    </code-block>
 
    <code-block title="Windows">
    ```bash
-   filefilego.exe account list
+   filefilego.exe address list
    ```
    </code-block>
    </code-group>
@@ -122,13 +122,13 @@ Before we run the cli client, we need to create a node identification key which 
    <code-group>
    <code-block title="Linux/Unix" active>
    ```bash
-   ./filefilego --rpc --http --httpport=8090 --httpaddr=0.0.0.0 --bootstrapnodes="/ip4/77.247.178.110/tcp/10209/p2p/16Uiu2HAm1WKH57E4vku2rhLT3qMtP6GX5t5CxxoSmQnJWMHc6Lot"
+   ./filefilego --rpc_services="*" --search_engine --storage --storage_dir="/home/" --storage_token="admintoken" --storage_fees_byte="10000" --addr=0.0.0.0 --http --http_addr=0.0.0.0 --data_downloads_path="/home/ffg/Downloads/"
    ```
    </code-block>
 
    <code-block title="Windows">
    ```bash
-   filefilego.exe --rpc --http --httpport=8090 --httpaddr=0.0.0.0 --bootstrapnodes="/ip4/77.247.178.110/tcp/10209/p2p/16Uiu2HAm1WKH57E4vku2rhLT3qMtP6GX5t5CxxoSmQnJWMHc6Lot"
+   filefilego.exe --rpc_services="*" --search_engine --storage --storage_dir="/home/" --storage_token="admintoken" --storage_fees_byte="10000" --addr=0.0.0.0 --http --http_addr=0.0.0.0 --data_downloads_path="/home/ffg/Downloads/"
    ```
    </code-block>
    </code-group>
