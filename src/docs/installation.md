@@ -53,13 +53,12 @@ This section will help you compile and test your program
       ```bash
    git clone https://github.com/filefilego/filefilego.git
    cd filefilego
-   make build
+   go build -o cmd/filefilego/filefilego.exe cmd/filefilego/main.go
       ```
       </code-block>
    </code-group>
 
-   If everything go well, you will have the output executable file
-
+  You will have the output executable file under `cmd/filefilego/`. You can navigate to the output directory with `cd cmd/filefilego/` and then run the commands in the following sections.
 
 ## Configuring and Running
 
@@ -82,7 +81,7 @@ Before we run the cli client, we need to create a node identification key which 
    </code-block>
    </code-group>
 
-2. Create an account to send/receive coins. Replace `mypassword` with your own password
+2. Create additional accounts if needed. Replace `mypassword` with your own password
 
    <code-group>
    <code-block title="Linux/Unix" active>
@@ -122,13 +121,13 @@ Before we run the cli client, we need to create a node identification key which 
    <code-group>
    <code-block title="Linux/Unix" active>
    ```bash
-   ./filefilego --rpc_services="*" --search_engine --storage --storage_dir="/home/" --storage_token="admintoken" --storage_fees_byte="10000" --addr=0.0.0.0 --http --http_addr=0.0.0.0 --data_downloads_path="/home/ffg/Downloads/"
+filefilego --node_identity_passphrase=yournodeidentitypassword --rpc_services="*" --search_engine --storage --storage_dir="~/StorageDirectory/" --storage_token="admintoken" --storage_fees_byte="10000" --addr=0.0.0.0 --http --http_addr=0.0.0.0 --data_downloads_path="~/FFG_Downloads" --bootstrap_nodes="/ip4/18.159.124.250/tcp/10209/p2p/16Uiu2HAmVXbhxA1tiA9PRZJWwSk5jdMfWXbfeGWaubVeT7MZu8ie"
    ```
    </code-block>
 
    <code-block title="Windows">
    ```bash
-   filefilego.exe --rpc_services="*" --search_engine --storage --storage_dir="/home/" --storage_token="admintoken" --storage_fees_byte="10000" --addr=0.0.0.0 --http --http_addr=0.0.0.0 --data_downloads_path="/home/ffg/Downloads/"
+filefilego.exe --node_identity_passphrase=yournodeidentitypassword --rpc_services="*" --search_engine --storage --storage_dir="~/StorageDirectory/" --storage_token="admintoken" --storage_fees_byte="10000" --addr=0.0.0.0 --http --http_addr=0.0.0.0 --data_downloads_path="~/FFG_Downloads" --bootstrap_nodes="/ip4/18.159.124.250/tcp/10209/p2p/16Uiu2HAmVXbhxA1tiA9PRZJWwSk5jdMfWXbfeGWaubVeT7MZu8ie"
    ```
    </code-block>
    </code-group>

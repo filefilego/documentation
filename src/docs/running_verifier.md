@@ -14,6 +14,7 @@ Before installing the CLI client, please ensure that your computer meets the nec
 ## Running a Verifier
 
 Using the `--verify` cli flag, we can run the client in verification mode.
+
 ```
 ./filefilego --rpc_services="*" --search_engine --storage --storage_dir="/home/" --storage_token="admintoken" --storage_fees_byte="10000" --addr=0.0.0.0 --http --http_addr=0.0.0.0 --data_downloads_path="/home/ffg/Downloads/" --verify --data_verification_fees="0x9" data_verification_transaction_fees="0x1"
 ```
