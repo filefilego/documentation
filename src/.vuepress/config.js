@@ -76,6 +76,7 @@ module.exports = {
           collapsable: false,
           children: [
             'data_contract',
+            'off_chain_data_contract',
           ]
         },
         {
