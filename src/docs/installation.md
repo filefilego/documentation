@@ -1,4 +1,4 @@
-# CLI Client
+# Client Installation
 
 ## Prerequisites
 

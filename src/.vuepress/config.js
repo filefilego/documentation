@@ -47,15 +47,35 @@ module.exports = {
     sidebar: {
       '/docs/': [
         {
-          title: 'Documentation',
+          title: 'Getting Started',
           collapsable: false,
           children: [
             '',
             'installation',
+            'cli_usage',
             'installation_wallet',
             'consensus',
             'comparison',
             'coin',
+          ]
+        },
+        {
+          title: 'Protocols',
+          collapsable: false,
+          children: [
+            'protocols',
+            'block_downloader',
+            'data_query_request',
+            'data_query_response',
+            'data_verification',
+            'super_light_node',
+          ]
+        },
+        {
+          title: 'Data Contracts',
+          collapsable: false,
+          children: [
+            'data_contract',
           ]
         },
         {

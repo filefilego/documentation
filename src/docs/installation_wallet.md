@@ -1,4 +1,4 @@
-# Wallet Application
+# GUI Wallet Application
 
 The wallet application is used to interact with the blockchain and the features of filefilego. We currently support the following operating systems:
 
