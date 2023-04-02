@@ -16,14 +16,14 @@ COMMANDS:
    get_storage_token                get_storage_token <admin_token>
    balance                          balance <address>
    send_transaction                 send_transaction <access_token> <nounce> <data> <from_address> <to_address> <tx_value> <tx_fees>
-   unlock_node_identity             unlock_node_identity <passphrase>
+   unlock_address                   unlock_address <address> <passphrase>
    query                            query filehash1,filehash2,filehash3
    responses                        responses <data_query_request_hash>
    create_contracts                 create_contracts <data_query_request_hash>
    create_send_tx_with_contracts    create_send_tx_with_contracts <contract_hash1,contract_hash2> <jwt_access_token> <current_nounce> <each_tx_fee>
    download                         download <contract_hash1> <file_hash> <file_size>
    send_file_signature_to_verifier  send_file_signature_to_verifier <contract_hash1> <file_hash>
-   decrypt_files                    decrypt_files <contract_hash> <file_hash1,file_hash2> <restore_full_path_file1,restore_full_path_file2>
+   decrypt_files                    decrypt_files <contract_hash> <file_hash1,file_hash2> <file1_merkle_root_hash,file2_merkle_root_hash> <restore_full_path_file1,restore_full_path_file2>
    host_info                        host_info
 ```
 
@@ -90,12 +90,12 @@ Error:
 ```
 
 
-## Unlock Node Key
+## Unlock Address
 
-Sending a transaction requires signing it first. In order to sign a transaction, first the key which signs it must be unlocked. Using the following command the node identity key can be unlocked by passing the passphrase used when the node was created:
+Sending a transaction requires signing it first. In order to sign a transaction, first the key which signs it must be unlocked. For example we could unlock the address of the node identity key by passing the passphrase used when the node was created:
 
 ```bash
-./filefilego client unlock_node_identity "admin"
+./filefilego client unlock_address "0x4752eaa3543eff51e0c802247bef37c2e78e26b5" "admin"
 
 Access token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoiIiwiZXhwIjoxNjg4MTQ4OTgyfQ.o5wMMkKMQw_mPyOTg_sW5nkvpif7dJ-3lsU2HtmbNo4
 ```
@@ -165,7 +165,7 @@ Now that the file is fully downloaded, its signature must be sent to the verifie
 And finally restore the original file by the following command:
 
 ```bash
-./filefilego client decrypt_files "0x6c449bc6acdc58e96259b40dc69b0d9063f22932e0a7e6e6b117855dde9190e9" "58e96be6203573ca905456b64878a710bd47241c" "/home/downloads/virtualbox-7.0_7_custom_name_you_choose.deb"
+./filefilego client decrypt_files "0x6c449bc6acdc58e96259b40dc69b0d9063f22932e0a7e6e6b117855dde9190e9" "58e96be6203573ca905456b64878a710bd47241c" "0x249c6f6426682b4e41ee5939df3e233e756e8ce0b86657d19e4bc67b16092178" "/home/downloads/virtualbox-7.0_7_custom_name_you_choose.deb"
 ```
 
 The last argument is the full path to where to save the file.
